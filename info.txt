@@ -1,0 +1,53 @@
+1. Librerías de Python:
+BeautifulSoup: Biblioteca popular para analizar archivos HTML y XML. Es fácil de usar y permite navegar por el árbol de elementos HTML y extraer datos.
+
+Requests: Para realizar peticiones HTTP. Se usa junto con BeautifulSoup para obtener el contenido de la página antes de analizarlo.
+
+Selenium: Herramienta para la automatización de navegadores. Permite interactuar con sitios dinámicos y JavaScript, lo que es útil si la página carga contenido de forma dinámica.
+
+Scrapy: Framework completo para scraping que permite crear arañas (spiders) que recorren sitios web, extraen datos y los procesan.
+
+lxml: Librería de Python para analizar y extraer datos de archivos HTML y XML de manera eficiente. Es más rápida que BeautifulSoup en algunos casos.
+
+PyQuery: Otra opción similar a jQuery, permite seleccionar elementos del DOM y extraer datos de una manera intuitiva.
+
+2. Herramientas y Plataformas:
+Octoparse: Herramienta de scraping visual que permite a los usuarios no técnicos extraer datos de páginas web mediante una interfaz gráfica.
+
+ParseHub: Herramienta visual que facilita la extracción de datos de sitios web con JavaScript y AJAX, ideal para usuarios sin experiencia en programación.
+
+Diffbot: Ofrece una API de scraping basada en inteligencia artificial que permite extraer datos estructurados de sitios web sin escribir código.
+
+WebHarvy: Herramienta de scraping con interfaz gráfica que permite configurar la extracción de datos de manera sencilla.
+
+3. Lenguajes de Programación:
+JavaScript (Node.js): Con bibliotecas como Puppeteer y Cheerio, se puede hacer scraping de sitios web. Puppeteer es ideal para interactuar con sitios que usan JavaScript para cargar contenido dinámico.
+
+R: Con paquetes como rvest y httr, R se utiliza para realizar scraping, especialmente en entornos estadísticos.
+
+PHP: Usando bibliotecas como simplehtmldom o Goutte, también es posible hacer scraping en PHP.
+
+4. APIs y Servicios de Web Scraping:
+ScraperAPI: Un servicio de API que maneja la rotación de proxies y la detección de CAPTCHAs para facilitar el scraping de sitios web.
+
+DataMiner: Extensión para Chrome y Edge que permite hacer scraping directamente desde el navegador, sin necesidad de escribir código.
+
+Common Crawl: Proyecto de código abierto que proporciona acceso a una gran cantidad de datos web extraídos mediante scraping.
+
+5. Otros Frameworks:
+Puppeteer: Una herramienta para controlar Chromium o Chrome mediante Node.js. Es útil para interactuar con sitios web que requieren JavaScript para cargar contenido.
+
+Playwright: Similar a Puppeteer, pero con soporte para múltiples navegadores como Chromium, Firefox y WebKit.
+
+6. Técnicas Adicionales:
+Rotación de IPs y proxies: Para evitar bloqueos durante el scraping, muchas veces se necesita utilizar proxies rotativos. Herramientas como ProxyMesh, ScraperAPI o servicios de VPN pueden ser útiles.
+
+Técnicas de evadir CAPTCHAs: Herramientas como 2Captcha o AntiCaptcha ayudan a resolver CAPTCHAs que se presentan al hacer scraping de páginas protegidas.
+
+Consejos:
+Legalidad y ética: Asegúrate de cumplir con los términos de uso de los sitios web, ya que algunos prohíben el scraping. Es importante hacer scraping de manera ética, evitando la sobrecarga de los servidores web y respetando las políticas de robots.txt.
+
+Manejo de datos estructurados: A veces es útil extraer datos en formatos estructurados como JSON o CSV para su posterior análisis.
+
+
+comando para inciiar el back: uvicorn main:app --reload
