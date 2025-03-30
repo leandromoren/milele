@@ -5,6 +5,8 @@ import sqlite3
 import re
 import logging
 
+#TODO: La busqueda por titulo, descripcion hace diferencia entre mayusculas y minusculas, se puede mejorar para que no lo haga
+
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -93,28 +95,36 @@ def get_products(q: str = "", min_precio: float = None, max_precio: float = None
         if 'conexion' in locals():
             conexion.close()
 
-@app.get("/productos")
-def leer_productos(
+@app.get("/")
+def read_products(
     q: str = Query("", description="Texto para buscar en título y descripción"),
     min_precio: float = Query(None, description="Precio mínimo"),
     max_precio: float = Query(None, description="Precio máximo")
 ):
-    #return get_products(q, min_precio, max_precio)
-    try:
-        # Validar rangos de precios (min < max)
-        if min_precio is not None and max_precio is not None and min_precio > max_precio:
-            raise HTTPException(status_code=400, detail="El precio mínimo no puede ser mayor que el precio máximo.")
+    return get_products(q, min_precio, max_precio)
 
-        productos = get_products(q, min_precio, max_precio)
+@app.get("/productos")
+def read_products(
+    q: str = Query("", description="Texto para buscar en título y descripción"),
+    min_precio: float = Query(None, description="Precio mínimo"),
+    max_precio: float = Query(None, description="Precio máximo")
+):
+    return get_products(q, min_precio, max_precio)
+    # try:
+    #     # Validar rangos de precios (min < max)
+    #     if min_precio is not None and max_precio is not None and min_precio > max_precio:
+    #         raise HTTPException(status_code=400, detail="El precio mínimo no puede ser mayor que el precio máximo.")
 
-        if not productos or "data" not in productos or len(productos["data"]) == 0:
-            raise HTTPException(status_code=404, detail="No se encontraron productos con los filtros aplicados.")
+    #     productos = get_products(q, min_precio, max_precio)
 
-        return productos  # Devuelve el resultado de la consulta
+    #     #if not productos or "data" not in productos or len(productos["data"]) == 0:
+    #         #raise HTTPException(status_code=404, detail="No se encontraron productos con los filtros aplicados.")
 
-    except HTTPException as http_err:
-        raise http_err  # Propaga errores HTTP personalizados (404, 400, etc.)
+    #     return productos  # Devuelve el resultado de la consulta
 
-    except Exception as e:
-        logging.error(f"❌ Error inesperado en /productos: {e}")
-        raise HTTPException(status_code=500, detail="Error interno del servidor.")
+    # except HTTPException as http_err:
+    #     raise http_err  # Propaga errores HTTP personalizados (404, 400, etc.)
+
+    # except Exception as e:
+    #     logging.error(f"❌ Error inesperado en /productos: {e}")
+    #     raise HTTPException(status_code=500, detail="Error interno del servidor.")
