@@ -48,3 +48,6 @@ Consejos:
 Legalidad y ética: Asegúrate de cumplir con los términos de uso de los sitios web, ya que algunos prohíben el scraping. Es importante hacer scraping de manera ética, evitando la sobrecarga de los servidores web y respetando las políticas de robots.txt.
 
 Manejo de datos estructurados: A veces es útil extraer datos en formatos estructurados como JSON o CSV para su posterior análisis.
+
+
+comando para inciiar el back: uvicorn main:app --reload
