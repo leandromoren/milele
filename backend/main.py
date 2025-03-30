@@ -101,7 +101,15 @@ def read_products(
     min_precio: float = Query(None, description="Precio mínimo"),
     max_precio: float = Query(None, description="Precio máximo")
 ):
-    return get_products(q, min_precio, max_precio)
+    try:
+        if min_precio is not None and max_precio is not None and min_precio > max_precio:
+            raise HTTPException(status_code=400, detail="El precio mínimo no puede ser mayor que el precio máximo.")
+        return get_products(q, min_precio, max_precio)
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        logging.error(f"❌ Error inesperado en /productos: {e}")
+        raise HTTPException(status_code=500, detail="Error interno del servidor.")
 
 @app.get("/productos")
 def read_products(
@@ -109,7 +117,15 @@ def read_products(
     min_precio: float = Query(None, description="Precio mínimo"),
     max_precio: float = Query(None, description="Precio máximo")
 ):
-    return get_products(q, min_precio, max_precio)
+    try:
+        if min_precio is not None and max_precio is not None and min_precio > max_precio:
+            raise HTTPException(status_code=400, detail="El precio mínimo no puede ser mayor que el precio máximo.")
+        return get_products(q, min_precio, max_precio)
+    except HTTPException as http_err:
+        raise http_err
+    except Exception as e:
+        logging.error(f"❌ Error inesperado en /productos: {e}")
+        raise HTTPException(status_code=500, detail="Error interno del servidor.")
     # try:
     #     # Validar rangos de precios (min < max)
     #     if min_precio is not None and max_precio is not None and min_precio > max_precio:
