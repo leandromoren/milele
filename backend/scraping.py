@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 #from tabulate import tabulate
 import pandas as pd
+import time
+import random
 
 def scrapear_webs(page):
     """Generador para las páginas de laptops."""
@@ -35,7 +37,8 @@ def scrapear_webs(page):
         # Recorrer cada página
         for page_url in scrapear_webs(1):
             driver.get(page_url)
-
+            delay = random.uniform(2, 5)
+            time.sleep(delay)
             # Extraer los datos
             title = driver.find_elements(By.CLASS_NAME, "title")
             price = driver.find_elements(By.CLASS_NAME, "price")
@@ -44,7 +47,7 @@ def scrapear_webs(page):
 
             # Guardar en la lista
             for i in range(len(title)):
-                producto = (title[i].text, price[i].text, description[i].text, valoracion[i].text)
+                producto = (title[i].get_attribute['innerText'], price[i].text, description[i].text, valoracion[i].text)
                 element_list.append(producto)
 
         #Inserta elementos evitando duplicados

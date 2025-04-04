@@ -5,6 +5,7 @@ from slowapi.util import get_remote_address
 from fastapi.responses import JSONResponse
 from ms import filtrar_productos
 
+#TODO: MEJORAR LA BUSQUEDA DE PRODUCTOS PORQUE ESTA DEVOLVIENDO CUALQUIER COSA
 
 # Configurar el limitador de peticiones
 limiter = Limiter(key_func=get_remote_address)
@@ -33,7 +34,7 @@ async def ratelimit_exceeded_handler(request: Request, exc):
 
 @app.get("/")
 @limiter.limit("10/10minute")
-def obtener_productos(
+async def obtener_productos(
     request: Request,
     q: str = Query("", description="Texto para buscar en título y descripción"),
     min_precio: float = Query(None, description="Precio mínimo"),
