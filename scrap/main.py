@@ -32,7 +32,7 @@ async def ratelimit_exceeded_handler(request: Request, exc):
         content={"detail": "🚨 Has excedido el límite de peticiones. Intenta más tarde."},
     )
 
-@app.get("/")
+@app.get("/home")
 @limiter.limit("10/10minute")
 async def obtener_productos(
     request: Request,

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useMemo } from 'react';
-import { Search, Menu, Heart, ShoppingBag, SlidersHorizontal, X, Send, Bot, MessageSquare, Maximize2, Minimize2, Tag, UserCircle2, BadgeCheck } from 'lucide-react';
+import { Heart, X, Send, Bot, MessageSquare, Maximize2, Minimize2, Tag, BadgeCheck } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 
 function App() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
@@ -15,7 +16,7 @@ function App() {
     }
   ]);
 
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState({ 
     priceRange: [0, 1000],
     season: '',
     size: '',
@@ -68,44 +69,7 @@ function App() {
   return (
     <div className="min-h-screen bg-violet-50">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center h-16 justify-between">
-            <div className="flex items-center gap-4">
-              <Menu className="h-6 w-6 cursor-pointer text-violet-600" />
-              <h1 className="text-xl font-semibold text-violet-900">FASHION FINDER</h1>
-            </div>
-            
-            {/* Search Bar */}
-            <div className="flex-1 max-w-2xl px-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-violet-400" />
-                <input
-                  type="text"
-                  placeholder="Buscar ideas de moda..."
-                  className="w-full py-2.5 pl-11 pr-4 bg-violet-50 rounded-full focus:outline-none focus:ring-2 focus:ring-violet-200"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 hover:bg-violet-200 transition-colors text-violet-700"
-              >
-                <SlidersHorizontal className="h-4 w-4" />
-                <span className="text-sm">Filtros</span>
-              </button>
-              <Heart className="h-5 w-5 cursor-pointer text-violet-600" />
-              <ShoppingBag className="h-5 w-5 cursor-pointer text-violet-600" />
-              <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-violet-600 text-white hover:bg-violet-700 transition-colors">
-                <UserCircle2 className="h-5 w-5" />
-                <span className="text-sm">Iniciar sesión</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Filter Sidebar */}
       <div className={`fixed right-0 top-0 h-full w-80 bg-white shadow-lg transform transition-transform duration-300 z-50 ${showFilters ? 'translate-x-0' : 'translate-x-full'}`}>

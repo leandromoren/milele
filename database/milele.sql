@@ -1,0 +1,2 @@
+INSERT INTO productos(nombre, descripcion, precio_base, descuento, genero, estado, sku, url_imagen_principal)
+VALUES("test", "descripcion de prueba", 56.78, NULL, "hombre", "activo", "eqwfde3242", "imagen");
