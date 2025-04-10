@@ -1,17 +1,23 @@
+import os
 import uuid
 import time
+import mysql.connector
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-import mysql.connector
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env.local')
+load_dotenv(dotenv_path)
 
 def conectar_mysql():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="1234",
-        database="dbo_milele"
+        host=os.getenv("DBO_HOST"),
+        user=os.getenv("DBO_USER"),
+        password=os.getenv("DBO_PASSWORD"),
+        database=os.getenv("DBO_DATABASE")
     )
 
 def scrapear_con_selenium():
