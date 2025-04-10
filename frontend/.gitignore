@@ -41,6 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 # local env files
-.env.local
-scrap/.env.local
+scrap/.env*
 scrap/__pycache__/
